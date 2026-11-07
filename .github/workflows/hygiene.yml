@@ -6,6 +6,7 @@ on:
   pull_request:
   schedule:
     - cron: "23 4 * * 1" # weekly, to catch newly retracted sources
+  workflow_dispatch:
 
 permissions:
   contents: read
