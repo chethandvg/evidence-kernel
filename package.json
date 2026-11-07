@@ -1,0 +1,22 @@
+{
+  "name": "golden-vectors",
+  "version": "0.1.0",
+  "description": "Run shared JSON golden vectors (golden-vectors@1) against a JavaScript or WebAssembly implementation.",
+  "license": "Apache-2.0",
+  "author": "Chethan Dandebala Venkatarama",
+  "homepage": "https://chethandvg.github.io/frequencies-of-life/repos/evidence-kernel/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chethandvg/evidence-kernel.git"
+  },
+  "type": "module",
+  "private": true,
+  "exports": "./js/golden-vectors.mjs",
+  "files": ["js/golden-vectors.mjs", "schema/", "LICENSE", "NOTICE"],
+  "scripts": {
+    "test": "node --test \"js/*.test.mjs\""
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

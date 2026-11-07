@@ -1,0 +1,21 @@
+[package]
+name = "golden-vectors"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Run shared JSON golden vectors (golden-vectors@1) against a Rust implementation."
+license = "Apache-2.0"
+authors = ["Chethan Dandebala Venkatarama"]
+repository = "https://github.com/chethandvg/evidence-kernel"
+homepage = "https://chethandvg.github.io/frequencies-of-life/repos/evidence-kernel/"
+readme = "README.md"
+keywords = ["testing", "golden-tests", "reproducibility", "cross-language"]
+categories = ["development-tools::testing"]
+
+[dependencies]
+# float_roundtrip: read every JSON number as the nearest double, as Python and JavaScript do.
+serde_json = { version = "1.0.154", features = ["float_roundtrip"] }
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"

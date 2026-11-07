@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it using these metadata."
+type: software
+title: "Evidence kernel"
+abstract: "A claims ledger in which every claim states how it is known, with DOI and retraction checks and cross-language golden-vector test runners."
+authors:
+  - given-names: "Chethan"
+    family-names: "Dandebala Venkatarama"
+    alias: "chethandvg"
+    orcid: "https://orcid.org/0009-0006-6099-343X"
+repository-code: "https://github.com/chethandvg/evidence-kernel"
+url: "https://chethandvg.github.io/frequencies-of-life/repos/evidence-kernel/"
+license: Apache-2.0
+version: 0.1.0
+date-released: "2026-11-07"
+keywords:
+  - reproducibility
+  - research-software
+  - citations
+  - retractions
+  - golden-tests
+  - formal-verification

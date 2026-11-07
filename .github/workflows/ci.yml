@@ -1,0 +1,25 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    uses: chethandvg/.github/.github/workflows/python-ci.yml@v1
+  rust:
+    uses: chethandvg/.github/.github/workflows/rust-ci.yml@v1
+    with:
+      working-directory: crates/golden-vectors
+  js:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - run: npm test

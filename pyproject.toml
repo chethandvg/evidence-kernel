@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling>=1.33"]
+build-backend = "hatchling.build"
+
+[project]
+name = "evidence-kernel"
+version = "0.1.0"
+description = "A claims ledger in which every claim states how it is known, with DOI and retraction checks and cross-language golden-vector test runners."
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Chethan Dandebala Venkatarama" }]
+requires-python = ">=3.10"
+keywords = ["reproducibility", "research-software", "citations", "retractions", "golden-tests", "formal-verification"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering",
+]
+dependencies = ["pyyaml>=6", "jsonschema>=4.23"]
+
+[project.optional-dependencies]
+test = ["pytest>=9"]
+
+[project.scripts]
+ek = "evidence_kernel.cli:main"
+evidence-kernel = "evidence_kernel.cli:main"
+
+[project.urls]
+Homepage = "https://chethandvg.github.io/frequencies-of-life/repos/evidence-kernel/"
+Repository = "https://github.com/chethandvg/evidence-kernel"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/evidence_kernel"]
+
+# schema/ at the repository root is the single public copy; the wheel carries it inside the package.
+[tool.hatch.build.targets.wheel.force-include]
+"schema" = "evidence_kernel/schema"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

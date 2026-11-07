@@ -1,0 +1,66 @@
+# Claims ledger for evidence-kernel (schema evidence-kernel/claims@1, https://github.com/chethandvg/evidence-kernel).
+# Levels: P proved in Lean · V verified numerics · T tested · R referenced (DOI/PMID) · M model assumption.
+schema: evidence-kernel/claims@1
+repo: evidence-kernel
+prefix: evidence
+claims:
+  - id: evidence:RUNNERS-AGREE
+    version: 1.0.0
+    level: T
+    statement: >-
+      The Rust, Python and JavaScript golden-vector runners give the same verdict on every shared
+      conformance case: numbers inside and outside tolerance, nested arrays and objects, strings,
+      booleans versus numbers, null, and expected or unexpected errors.
+    tests:
+      - conformance/compare-cases.json
+      - crates/golden-vectors/src/lib.rs
+      - tests/test_vectors.py
+      - js/golden-vectors.test.mjs
+
+  - id: evidence:LEDGER-CHECKED
+    version: 1.0.0
+    level: T
+    statement: >-
+      `ek validate` rejects a ledger that breaks the claims@1 schema, repeats an id, uses another
+      repo's prefix, points to a missing proof, check or test file, has an R claim without a DOI or
+      PMID, or depends on a claim that is missing or at another major version.
+    tests:
+      - tests/test_validate.py
+
+  - id: evidence:RETRACTIONS-FAIL
+    version: 1.0.0
+    level: T
+    statement: >-
+      `ek resolve` exits with an error when a cited DOI or PMID does not resolve, or when Crossref or
+      PubMed marks it as retracted or withdrawn.
+    tests:
+      - tests/test_resolve.py
+
+  - id: evidence:LEAN-NAMES-EXIST
+    version: 1.0.0
+    level: T
+    statement: >-
+      `ek lean-links` reports every P claim whose theorem Lean does not know, and always deletes its
+      temporary Lean file.
+    tests:
+      - tests/test_lean_links.py
+    notes: The tests replace lake with a stand-in, so they do not run Lean itself.
+
+  - id: evidence:README-TABLE-CURRENT
+    version: 1.0.0
+    level: T
+    statement: >-
+      The README claims table depends only on `claims.yaml`, and `ek readme-table --check` fails
+      whenever the table is out of date.
+    tests:
+      - tests/test_readme_table.py
+
+  - id: evidence:VECTORS-CHECKED
+    version: 1.0.0
+    level: T
+    statement: >-
+      `ek vectors` rejects a vector file that breaks the golden-vectors@1 schema or cites a claim
+      that is not in the ledger.
+    tests:
+      - tests/test_vectors_cmd.py
+      - tests/test_self.py
